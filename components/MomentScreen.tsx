@@ -15,32 +15,32 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
   const [mode, setMode] = useState<'quick' | 'learn'>('quick');
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-stone-50 flex flex-col font-sans selection:bg-emerald-100">
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col font-sans selection:bg-emerald-100 select-none">
       {/* Mode Toggle */}
-      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-center">
-        <div className="bg-white/80 backdrop-blur-md p-1 rounded-full border border-stone-200 shadow-sm flex gap-1">
+      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-center pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+        <div className="bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-stone-200 shadow-sm flex gap-1">
           <button
             onClick={() => setMode('quick')}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all active:scale-95 ${
               mode === 'quick' ? 'bg-stone-900 text-white shadow-md' : 'text-stone-400 hover:text-stone-600'
             }`}
           >
-            <Zap className="w-3 h-3" />
+            <Zap className="w-3.5 h-3.5" />
             Quick
           </button>
           <button
             onClick={() => setMode('learn')}
-            className={`flex items-center gap-2 px-4 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all ${
+            className={`flex items-center gap-2 px-6 py-2.5 rounded-full text-[10px] font-bold uppercase tracking-widest transition-all active:scale-95 ${
               mode === 'learn' ? 'bg-stone-900 text-white shadow-md' : 'text-stone-400 hover:text-stone-600'
             }`}
           >
-            <BookOpen className="w-3 h-3" />
+            <BookOpen className="w-3.5 h-3.5" />
             Learn
           </button>
         </div>
       </div>
 
-      <main className="flex-1 p-6 pt-24 pb-32 space-y-10">
+      <main className="flex-1 p-6 pt-[calc(6rem+env(safe-area-inset-top,0px))] pb-[calc(8rem+env(safe-area-inset-bottom,0px))] space-y-10 overflow-y-auto">
         <AnimatePresence mode="wait">
           {mode === 'quick' ? (
             <motion.div
@@ -52,7 +52,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
             >
               {/* Header */}
               <div className="space-y-1 px-2">
-                <h1 className="text-3xl font-bold text-stone-900 tracking-tight leading-tight">
+                <h1 className="text-3xl font-bold text-stone-900 tracking-tight leading-tight select-text">
                   {moment.title}
                 </h1>
               </div>
@@ -63,7 +63,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                   <p className="text-[10px] font-bold text-emerald-400 uppercase tracking-[0.25em]">
                     TRY THIS NOW
                   </p>
-                  <h2 className="text-3xl font-medium leading-tight tracking-tight">
+                  <h2 className="text-3xl font-medium leading-tight tracking-tight select-text">
                     {moment.tryThis}
                   </h2>
                 </div>
@@ -79,7 +79,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
             >
               {/* Header */}
               <div className="space-y-1 px-2">
-                <h1 className="text-3xl font-bold text-stone-900 tracking-tight leading-tight">
+                <h1 className="text-3xl font-bold text-stone-900 tracking-tight leading-tight select-text">
                   {moment.title}
                 </h1>
               </div>
@@ -90,7 +90,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                   <h3 className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.15em]">
                     Moment
                   </h3>
-                  <p className="text-xl text-stone-700 leading-relaxed font-light">
+                  <p className="text-xl text-stone-700 leading-relaxed font-light select-text">
                     {moment.theMoment}
                   </p>
                 </section>
@@ -99,7 +99,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                   <h3 className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.15em]">
                     Notice
                   </h3>
-                  <p className="text-xl text-stone-700 leading-relaxed font-light whitespace-pre-line">
+                  <p className="text-xl text-stone-700 leading-relaxed font-light whitespace-pre-line select-text">
                     {moment.whatYouNotice}
                   </p>
                 </section>
@@ -108,7 +108,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                   <h3 className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.15em]">
                     Try This
                   </h3>
-                  <p className="text-xl text-stone-900 leading-relaxed font-medium">
+                  <p className="text-xl text-stone-900 leading-relaxed font-medium select-text">
                     {moment.tryThis}
                   </p>
                 </section>
@@ -117,7 +117,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                   <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">
                     Why This Matters
                   </h3>
-                  <p className="text-stone-500 font-light leading-relaxed">
+                  <p className="text-stone-500 font-light leading-relaxed select-text">
                     {moment.whyThisMatters}
                   </p>
                 </section>
@@ -132,7 +132,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                       <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest">
                         Reflective
                       </p>
-                      <p className="text-xl text-stone-800 italic font-light leading-relaxed">
+                      <p className="text-xl text-stone-800 italic font-light leading-relaxed select-text">
                         “{moment.laterReflective}”
                       </p>
                     </div>
@@ -141,7 +141,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                       <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest">
                         Casual
                       </p>
-                      <p className="text-xl text-stone-800 italic font-light leading-relaxed">
+                      <p className="text-xl text-stone-800 italic font-light leading-relaxed select-text">
                         “{moment.laterCasual}”
                       </p>
                     </div>
@@ -154,11 +154,11 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
       </main>
 
       {/* Action */}
-      <div className="fixed bottom-0 left-0 w-full p-8 bg-gradient-to-t from-stone-50 via-stone-50 to-transparent z-20">
+      <div className="fixed bottom-0 left-0 w-full p-8 pb-[calc(2rem+env(safe-area-inset-bottom,0px))] bg-gradient-to-t from-stone-50 via-stone-50 to-transparent z-20">
         <div className="max-w-md mx-auto">
           <button
             onClick={onComplete}
-            className="w-full py-5 bg-stone-900 text-white rounded-full font-medium transition-all active:scale-[0.98] shadow-xl shadow-stone-200"
+            className="w-full py-5 bg-stone-900 text-white rounded-full font-medium transition-all active:scale-[0.96] shadow-xl shadow-stone-200"
           >
             We did this
           </button>

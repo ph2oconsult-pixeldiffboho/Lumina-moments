@@ -37,8 +37,8 @@ export default function Home() {
   const limitReached = progress.dailyCompletedCount >= DAILY_LIMIT;
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-stone-50 flex flex-col font-sans selection:bg-emerald-100">
-      <header className="p-8 pt-16">
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col font-sans selection:bg-emerald-100 select-none">
+      <header className="p-8 pt-[calc(4rem+env(safe-area-inset-top,0px))]">
         <div className="space-y-1">
           <p className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.25em]">
             Lumina Moments
@@ -62,7 +62,7 @@ export default function Home() {
                 <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.2em]">
                   Moment Complete
                 </span>
-                <h2 className="text-3xl font-medium text-stone-900 tracking-tight leading-tight">
+                <h2 className="text-3xl font-medium text-stone-900 tracking-tight leading-tight select-text">
                   You showed up well.
                 </h2>
               </div>
@@ -70,7 +70,7 @@ export default function Home() {
               {!limitReached && (
                 <div className="p-6 bg-stone-50 rounded-[32px] border border-stone-100 space-y-2">
                   <p className="text-[9px] font-bold text-stone-400 uppercase tracking-[0.2em]">Next Recommended</p>
-                  <p className="text-stone-900 font-medium leading-tight">{currentMoment.title}</p>
+                  <p className="text-stone-900 font-medium leading-tight select-text">{currentMoment.title}</p>
                 </div>
               )}
             </div>
@@ -79,10 +79,10 @@ export default function Home() {
               <span className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.2em]">
                 Today&apos;s Focus
               </span>
-              <h2 className="text-3xl font-medium text-stone-900 tracking-tight leading-tight">
+              <h2 className="text-3xl font-medium text-stone-900 tracking-tight leading-tight select-text">
                 {currentMoment.title}
               </h2>
-              <p className="text-stone-500 font-light leading-relaxed">
+              <p className="text-stone-500 font-light leading-relaxed select-text">
                 A small step that builds real confidence.
               </p>
             </div>
@@ -95,7 +95,7 @@ export default function Home() {
           ) : (
             <Link 
               href="/today"
-              className="group flex items-center justify-between w-full p-6 bg-stone-900 text-white rounded-[24px] font-medium transition-all active:scale-[0.98] hover:bg-stone-800"
+              className="group flex items-center justify-between w-full p-6 bg-stone-900 text-white rounded-[24px] font-medium transition-all active:scale-[0.96] hover:bg-stone-800"
             >
               <span>{hasCompletedToday ? "Next Moment" : "Start Moment"}</span>
               <div className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center group-hover:bg-white/20 transition-colors">
@@ -111,7 +111,7 @@ export default function Home() {
         </p>
       </main>
 
-      <footer className="p-8 pb-12">
+      <footer className="p-8 pb-[calc(3rem+env(safe-area-inset-bottom,0px))]">
         <div className="h-px w-full bg-stone-200 mb-8" />
         <div className="flex justify-between items-center text-[10px] font-bold text-stone-400 uppercase tracking-[0.2em]">
           <span>{currentPhase.title}</span>

@@ -11,7 +11,7 @@ interface RewardScreenProps {
 
 export default function RewardScreen({ headline, onContinue }: RewardScreenProps) {
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-stone-50 flex flex-col items-center justify-center p-10 font-sans selection:bg-emerald-100">
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col items-center justify-center p-10 pt-[env(safe-area-inset-top,24px)] pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] font-sans selection:bg-emerald-100 select-none">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -37,7 +37,7 @@ export default function RewardScreen({ headline, onContinue }: RewardScreenProps
 
         {/* The Win Message */}
         <div className="space-y-6">
-          <h1 className="text-4xl font-bold text-stone-900 tracking-tight leading-[1.15] px-4">
+          <h1 className="text-4xl font-bold text-stone-900 tracking-tight leading-[1.15] px-4 select-text">
             {headline}
           </h1>
         </div>
@@ -46,7 +46,7 @@ export default function RewardScreen({ headline, onContinue }: RewardScreenProps
         <div className="pt-8 w-full">
           <button
             onClick={onContinue}
-            className="w-full py-5 bg-stone-900 text-white rounded-[24px] font-medium transition-all active:scale-[0.98] shadow-xl shadow-stone-200"
+            className="w-full py-5 bg-stone-900 text-white rounded-[24px] font-medium transition-all active:scale-[0.96] shadow-xl shadow-stone-200"
           >
             Continue
           </button>

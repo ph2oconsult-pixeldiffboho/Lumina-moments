@@ -36,7 +36,7 @@ function ReflectionContent() {
   };
 
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-stone-50 flex flex-col items-center justify-center p-8 font-sans selection:bg-emerald-100">
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col items-center justify-center p-8 pt-[env(safe-area-inset-top,24px)] pb-[calc(2rem+env(safe-area-inset-bottom,0px))] font-sans selection:bg-emerald-100 select-none">
       <AnimatePresence mode="wait">
         {!selected ? (
           <motion.div
@@ -46,7 +46,7 @@ function ReflectionContent() {
             exit={{ opacity: 0, y: -10 }}
             className="w-full space-y-12 text-center"
           >
-            <h1 className="text-2xl font-medium text-stone-900 tracking-tight">
+            <h1 className="text-2xl font-medium text-stone-900 tracking-tight select-text">
               How did that feel?
             </h1>
 
@@ -55,7 +55,7 @@ function ReflectionContent() {
                 <button
                   key={value}
                   onClick={() => handleSelect(value)}
-                  className="w-full py-5 px-8 bg-white border border-stone-100 rounded-[24px] text-stone-600 text-sm font-medium shadow-sm active:scale-[0.98] transition-all hover:border-stone-200"
+                  className="w-full py-5 px-8 bg-white border border-stone-100 rounded-[24px] text-stone-600 text-sm font-medium shadow-sm active:scale-[0.96] transition-all hover:border-stone-200"
                 >
                   {value === 'helped' ? 'That helped' : value === 'little' ? 'A little' : 'Not really'}
                 </button>
@@ -69,13 +69,13 @@ function ReflectionContent() {
             animate={{ opacity: 1, y: 0 }}
             className="w-full space-y-12 text-center"
           >
-            <p className="text-xl text-stone-900 font-medium tracking-tight">
+            <p className="text-xl text-stone-900 font-medium tracking-tight select-text">
               {RESPONSES[selected]}
             </p>
 
             <button
               onClick={handleHome}
-              className="w-full py-5 px-8 bg-stone-900 text-white rounded-[24px] text-sm font-medium shadow-lg active:scale-[0.98] transition-all"
+              className="w-full py-5 px-8 bg-stone-900 text-white rounded-[24px] text-sm font-medium shadow-lg active:scale-[0.96] transition-all"
             >
               Back to Home
             </button>
@@ -88,7 +88,7 @@ function ReflectionContent() {
 
 export default function ReflectionPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen bg-stone-50" />}>
+    <Suspense fallback={<div className="min-h-[100dvh] bg-stone-50" />}>
       <ReflectionContent />
     </Suspense>
   );
