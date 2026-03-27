@@ -41,10 +41,10 @@ export default function Home() {
       <header className="p-8 pt-[calc(4rem+env(safe-area-inset-top,0px))]">
         <div className="space-y-1">
           <p className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.25em]">
-            Lumina Moments
+            Lumina
           </p>
           <h1 className="text-2xl font-medium text-stone-900 tracking-tight">
-            Building Confidence
+            A Shared Journey
           </h1>
         </div>
       </header>
@@ -63,7 +63,7 @@ export default function Home() {
                   Moment Complete
                 </span>
                 <h2 className="text-3xl font-medium text-stone-900 tracking-tight leading-tight select-text">
-                  You showed up well.
+                  Growth is happening.
                 </h2>
               </div>
 
@@ -83,7 +83,7 @@ export default function Home() {
                 {currentMoment.title}
               </h2>
               <p className="text-stone-500 font-light leading-relaxed select-text">
-                A small step that builds real confidence.
+                Real-world experience builds real-world confidence.
               </p>
             </div>
           )}

@@ -11,20 +11,20 @@ interface OnboardingProps {
 
 const screens = [
   {
-    title: "Confidence grows in small moments",
+    title: "The child is the center of the journey",
     icon: <Sprout className="w-16 h-16 text-emerald-600" />,
     color: "bg-emerald-50",
   },
   {
-    title: "You don't need perfect parenting",
+    title: "You are the guide, not the controller",
     icon: <Heart className="w-16 h-16 text-rose-500" />,
     color: "bg-rose-50",
   },
   {
-    title: "Just show up differently",
+    title: "Confidence is built in the real world",
     icon: <Users className="w-16 h-16 text-blue-600" />,
     color: "bg-blue-50",
-    button: "Start",
+    button: "Start Journey",
   },
 ];
 

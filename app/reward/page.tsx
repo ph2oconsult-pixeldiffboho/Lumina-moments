@@ -19,7 +19,7 @@ export default function RewardPage() {
     const moment = week.moments[progress.momentIndex];
     
     if (moment) {
-      setHeadline(moment.finalReward);
+      setHeadline(moment.reinforcement);
       setMomentTitle(moment.title);
     }
   }, []);

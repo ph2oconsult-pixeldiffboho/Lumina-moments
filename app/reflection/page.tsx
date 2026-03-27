@@ -10,9 +10,9 @@ import Link from 'next/link';
 type ReflectionValue = 'helped' | 'little' | 'not really';
 
 const RESPONSES: Record<ReflectionValue, string> = {
-  'helped': 'That’s a great moment.',
-  'little': 'That still counts.',
-  'not really': 'That’s okay. You showed up.'
+  'helped': 'That’s real growth in action.',
+  'little': 'Every small step counts.',
+  'not really': 'Showing up is the first step.'
 };
 
 function ReflectionContent() {
@@ -59,7 +59,7 @@ function ReflectionContent() {
             className="w-full space-y-12 text-center"
           >
             <h1 className="text-2xl font-medium text-stone-900 tracking-tight select-text">
-              How did that feel?
+              What happened in the real world?
             </h1>
 
             <div className="space-y-3">
@@ -69,7 +69,7 @@ function ReflectionContent() {
                   onClick={() => handleSelect(value)}
                   className="w-full py-5 px-8 bg-white border border-stone-100 rounded-[24px] text-stone-600 text-sm font-medium shadow-sm active:scale-[0.96] transition-all hover:border-stone-200"
                 >
-                  {value === 'helped' ? 'That helped' : value === 'little' ? 'A little' : 'Not really'}
+                  {value === 'helped' ? 'They did it on their own' : value === 'little' ? 'They needed help' : 'They avoided it'}
                 </button>
               ))}
             </div>

@@ -63,7 +63,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
               {/* Header */}
               <div className="space-y-1 px-2">
                 <h1 className="text-3xl font-bold text-stone-900 tracking-tight leading-tight select-text">
-                  {moment.title}
+                   {moment.title}
                 </h1>
               </div>
 
@@ -74,7 +74,7 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
                     TRY THIS NOW
                   </p>
                   <h2 className="text-3xl font-medium leading-tight tracking-tight select-text">
-                    {moment.tryThis}
+                    {moment.tryThisNow}
                   </h2>
                 </div>
               </div>
@@ -107,55 +107,29 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
 
                 <section className="space-y-3">
                   <h3 className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.15em]">
-                    Notice
+                    Child Experience
                   </h3>
-                  <p className="text-xl text-stone-700 leading-relaxed font-light whitespace-pre-line select-text">
-                    {moment.whatYouNotice}
+                  <p className="text-xl text-stone-700 leading-relaxed font-light select-text">
+                    {moment.childExperience}
                   </p>
                 </section>
 
                 <section className="space-y-3">
                   <h3 className="text-[10px] font-bold text-emerald-700 uppercase tracking-[0.15em]">
-                    Try This
+                    Parent Role
                   </h3>
-                  <p className="text-xl text-stone-900 leading-relaxed font-medium select-text">
-                    {moment.tryThis}
+                  <p className="text-xl text-stone-700 leading-relaxed font-light select-text">
+                    {moment.parentRole}
                   </p>
                 </section>
 
-                <section className="space-y-3">
-                  <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">
-                    Why This Matters
+                <section className="bg-stone-900 text-white p-8 rounded-[40px] shadow-xl space-y-4">
+                  <h3 className="text-[10px] font-bold text-emerald-400 uppercase tracking-[0.15em]">
+                    Try This Now
                   </h3>
-                  <p className="text-stone-500 font-light leading-relaxed select-text">
-                    {moment.whyThisMatters}
+                  <p className="text-2xl font-medium leading-tight select-text">
+                    {moment.tryThisNow}
                   </p>
-                </section>
-
-                <section className="bg-white p-8 rounded-[40px] border border-stone-100 shadow-sm space-y-8">
-                  <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">
-                    Later Say
-                  </h3>
-                  
-                  <div className="space-y-8">
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest">
-                        Reflective
-                      </p>
-                      <p className="text-xl text-stone-800 italic font-light leading-relaxed select-text">
-                        “{moment.laterReflective}”
-                      </p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <p className="text-[9px] font-bold text-stone-400 uppercase tracking-widest">
-                        Casual
-                      </p>
-                      <p className="text-xl text-stone-800 italic font-light leading-relaxed select-text">
-                        “{moment.laterCasual}”
-                      </p>
-                    </div>
-                  </div>
                 </section>
               </div>
             </motion.div>
