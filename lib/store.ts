@@ -27,7 +27,7 @@ export function markDayComplete() {
   progress.completedDays += 1;
   progress.streak += 1;
   
-  if (progress.dayIndex >= 5) {
+  if (progress.dayIndex >= 7) {
     progress.dayIndex = 0;
     progress.weekIndex += 1;
   }

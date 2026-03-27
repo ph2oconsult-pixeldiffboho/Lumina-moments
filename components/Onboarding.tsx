@@ -10,20 +10,20 @@ interface OnboardingProps {
 
 const screens = [
   {
-    title: "When something’s wrong… but they don’t say it",
-    body: ["They go quiet", "They say “I’m fine”", "But you can feel something isn’t right"],
+    title: "Confidence is built in small moments",
+    body: ["Speaking up", "Trying again", "Handling something that felt hard"],
   },
   {
-    title: "Most moments like this get missed",
-    body: ["Not because we don’t care", "But because we don’t know what to say"],
+    title: "Those moments happen every day",
+    body: ["At school", "With friends", "At home"],
   },
   {
-    title: "This gives you something to do in that moment",
-    body: ["Something your child can try", "Something you can say"],
+    title: "This helps you handle them",
+    body: ["One simple step each day", "Something your child can try", "Something you can say"],
   },
   {
-    title: "Start with something real",
-    body: ["This isn’t something to learn", "It’s something to try"],
+    title: "Start building it today",
+    body: ["Just a few minutes", "Something real you can use straight away"],
     button: "Start Day 1",
   },
 ];

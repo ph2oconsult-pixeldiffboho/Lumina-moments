@@ -34,12 +34,14 @@ export default function Home() {
   const isInitialJourney = progress.completedDays < 3;
   
   const getCompletionMessage = () => {
-    if (progress.completedDays === 0) return "Start with something small. Just a few minutes.";
-    if (progress.completedDays === 1) return "You noticed something today. That’s how it starts.";
-    if (progress.completedDays === 2) return "Small shifts lead to big changes.";
-    if (progress.completedDays === 3) return "You’re building a new way of being together.";
-    if (progress.completedDays === 5) return "Growth can feel quiet. That’s okay.";
-    if (progress.completedDays === 7) return "One week. Something has already changed.";
+    if (progress.completedDays === 0) return "Confidence is built in small moments.";
+    if (progress.completedDays === 1) return "That’s how confidence builds.";
+    if (progress.completedDays === 2) return "You handled something today.";
+    if (progress.completedDays === 3) return "That’s a strong step forward.";
+    if (progress.completedDays === 5) return "Every small step builds real skill.";
+    if (progress.completedDays === 7) return "One week. You're building real confidence.";
+    if (progress.completedDays === 14) return "Two weeks of steady progress. You're doing great.";
+    if (progress.completedDays === 21) return "You’ve completed three weeks of steady growth.";
     return null;
   };
 
@@ -55,7 +57,7 @@ export default function Home() {
         )}
         <div className="space-y-4">
           <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] font-medium">
-            For when something doesn’t feel quite right
+            Build confidence through real moments
           </p>
           <div className="space-y-1">
             <div className="flex items-center gap-3">
@@ -85,7 +87,7 @@ export default function Home() {
             Try this today (2 mins)
           </Link>
           <p className="text-center text-xs text-stone-400 font-light italic">
-            A small step that can change how today feels
+            A small step that builds real confidence
           </p>
         </div>
       </div>

@@ -28,12 +28,12 @@ export default function Today() {
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">This happens</h3>
+            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">The moment</h3>
             <p className="text-stone-700 text-lg leading-relaxed font-light">{todayStep.youKnowWhen}</p>
           </div>
 
           <div className="space-y-3">
-            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">What it feels like</h3>
+            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em]">What you might notice</h3>
             <p className="text-stone-700 text-lg leading-relaxed font-light">{todayStep.whatHappens}</p>
           </div>
 
@@ -43,7 +43,7 @@ export default function Today() {
           </div>
 
           <div className="bg-stone-50 p-6 rounded-[32px] border border-stone-100">
-            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em] mb-3">Later, you might say</h3>
+            <h3 className="text-[10px] font-bold text-stone-400 uppercase tracking-[0.15em] mb-3">Later, you could say</h3>
             <p className="text-stone-800 italic font-light leading-relaxed">{todayStep.parentMoment}</p>
           </div>
 
@@ -60,7 +60,7 @@ export default function Today() {
         <div className="flex-1 flex flex-col items-center justify-center text-center space-y-8 px-4">
           <div className="space-y-4">
             <h2 className="text-2xl font-medium text-stone-900 leading-snug">
-              You noticed something today. That’s how it starts.
+              {todayStep.completionMessage || "That’s how confidence builds."}
             </h2>
           </div>
           <button 
