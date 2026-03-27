@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { completeOnboarding } from '../lib/store';
+import { ArrowRight, Sprout, Heart, Sparkles, Users } from 'lucide-react';
 
 interface OnboardingProps {
   onComplete: () => void;
@@ -10,21 +11,20 @@ interface OnboardingProps {
 
 const screens = [
   {
-    title: "Confidence is built in small moments",
-    body: ["Speaking up", "Trying again", "Handling something that felt hard"],
+    title: "Confidence grows in small moments",
+    icon: <Sprout className="w-16 h-16 text-emerald-600" />,
+    color: "bg-emerald-50",
   },
   {
-    title: "Those moments happen every day",
-    body: ["At school", "With friends", "At home"],
+    title: "You don't need perfect parenting",
+    icon: <Heart className="w-16 h-16 text-rose-500" />,
+    color: "bg-rose-50",
   },
   {
-    title: "This helps you handle them",
-    body: ["One simple step each day", "Something your child can try", "Something you can say"],
-  },
-  {
-    title: "Start building it today",
-    body: ["Just a few minutes", "Something real you can use straight away"],
-    button: "Start Day 1",
+    title: "Just show up differently",
+    icon: <Users className="w-16 h-16 text-blue-600" />,
+    color: "bg-blue-50",
+    button: "Start",
   },
 ];
 
@@ -41,38 +41,58 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-stone-50 z-50 flex flex-col p-8 pt-32">
+    <div className="fixed inset-0 bg-stone-50 z-50 flex flex-col selection:bg-emerald-100 overflow-hidden">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -10 }}
-          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-          className="flex-1 space-y-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="flex-1 flex flex-col p-10 pt-32"
         >
-          <h1 className="text-3xl font-medium tracking-tight text-stone-900 leading-snug max-w-[280px]">
-            {screens[currentStep].title}
-          </h1>
-          
-          <div className="space-y-3">
-            {screens[currentStep].body.map((line, i) => (
-              <p key={i} className="text-lg text-stone-500 font-light leading-relaxed">
-                {line}
-              </p>
-            ))}
+          <div className="flex-1 flex flex-col items-center justify-center space-y-16 text-center">
+            {/* Visual Metaphor */}
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.2, type: "spring", stiffness: 100 }}
+              className={`w-32 h-32 ${screens[currentStep].color} rounded-full flex items-center justify-center shadow-inner`}
+            >
+              {screens[currentStep].icon}
+            </motion.div>
+
+            <motion.h1 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3 }}
+              className="text-4xl font-medium tracking-tight text-stone-900 leading-tight max-w-[280px]"
+            >
+              {screens[currentStep].title}
+            </motion.h1>
+          </div>
+
+          <div className="pb-16 space-y-8">
+            {/* Progress Dots */}
+            <div className="flex justify-center gap-2">
+              {screens.map((_, i) => (
+                <div 
+                  key={i} 
+                  className={`h-1 rounded-full transition-all duration-500 ${i === currentStep ? 'w-8 bg-stone-900' : 'w-2 bg-stone-200'}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNext}
+              className="w-full py-5 bg-stone-900 text-white rounded-[24px] font-medium flex items-center justify-center gap-2 transition-all active:scale-[0.98] shadow-xl shadow-stone-200"
+            >
+              {screens[currentStep].button || "Continue"}
+              <ArrowRight className="w-4 h-4" />
+            </button>
           </div>
         </motion.div>
       </AnimatePresence>
-
-      <div className="pb-16">
-        <button
-          onClick={handleNext}
-          className="w-full py-4 bg-emerald-700 text-white rounded-full text-base font-medium transition-all active:scale-[0.98] shadow-sm hover:bg-emerald-800"
-        >
-          {screens[currentStep].button || "Next"}
-        </button>
-      </div>
     </div>
   );
 }

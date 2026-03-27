@@ -1,13 +1,14 @@
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import BottomNav from "../components/BottomNav";
+import NudgeSystem from "../components/NudgeSystem";
+import SessionTracker from "../components/SessionTracker";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Lumina",
-  description: "A guided journey for parents and children.",
+  title: "Lumina Moments",
+  description: "Helping parents build real confidence in children through small, everyday moments.",
 };
 
 export default function RootLayout({
@@ -17,9 +18,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.className} bg-stone-50 text-stone-900`}>
-        <main className="pb-20">{children}</main>
-        <BottomNav />
+      <body className={`${inter.className} bg-stone-50 text-stone-900 antialiased`}>
+        <SessionTracker />
+        <main className="">{children}</main>
+        <NudgeSystem />
       </body>
     </html>
   );
