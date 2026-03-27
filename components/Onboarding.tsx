@@ -10,20 +10,20 @@ interface OnboardingProps {
 
 const screens = [
   {
-    title: "Some moments are harder than they look",
-    body: ["Not being picked", "Saying nothing when you want to", "Feeling left out"],
+    title: "When something’s wrong… but they don’t say it",
+    body: ["They go quiet", "They say “I’m fine”", "But you can feel something isn’t right"],
   },
   {
-    title: "This helps you handle those moments",
-    body: ["One small step each day", "Something your child can try", "Something you can say"],
+    title: "Most moments like this get missed",
+    body: ["Not because we don’t care", "But because we don’t know what to say"],
   },
   {
-    title: "Just a few minutes a day",
-    body: ["Open the app", "Do today’s step", "Talk about it later"],
+    title: "This gives you something to do in that moment",
+    body: ["Something your child can try", "Something you can say"],
   },
   {
-    title: "Start with Day 1",
-    body: ["Week 1 — Noticing Feelings"],
+    title: "Start with something real",
+    body: ["This isn’t something to learn", "It’s something to try"],
     button: "Start Day 1",
   },
 ];
@@ -41,23 +41,23 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-stone-50 z-50 flex flex-col p-8 pt-24">
+    <div className="fixed inset-0 bg-stone-50 z-50 flex flex-col p-8 pt-32">
       <AnimatePresence mode="wait">
         <motion.div
           key={currentStep}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -20 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="flex-1 space-y-12"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
+          className="flex-1 space-y-10"
         >
-          <h1 className="text-4xl font-light tracking-tight text-stone-900 leading-tight">
+          <h1 className="text-3xl font-medium tracking-tight text-stone-900 leading-snug max-w-[280px]">
             {screens[currentStep].title}
           </h1>
           
-          <div className="space-y-4">
+          <div className="space-y-3">
             {screens[currentStep].body.map((line, i) => (
-              <p key={i} className="text-xl text-stone-500 font-light">
+              <p key={i} className="text-lg text-stone-500 font-light leading-relaxed">
                 {line}
               </p>
             ))}
@@ -65,10 +65,10 @@ export default function Onboarding({ onComplete }: OnboardingProps) {
         </motion.div>
       </AnimatePresence>
 
-      <div className="pb-12">
+      <div className="pb-16">
         <button
           onClick={handleNext}
-          className="w-full py-4 bg-stone-900 text-stone-50 rounded-full text-lg font-medium transition-transform active:scale-95"
+          className="w-full py-4 bg-emerald-700 text-white rounded-full text-base font-medium transition-all active:scale-[0.98] shadow-sm hover:bg-emerald-800"
         >
           {screens[currentStep].button || "Next"}
         </button>

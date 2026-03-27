@@ -34,48 +34,65 @@ export default function Home() {
   const isInitialJourney = progress.completedDays < 3;
   
   const getCompletionMessage = () => {
-    if (progress.completedDays === 0) return "Start here — just a few minutes a day";
-    if (progress.completedDays === 1) return "Good start. Come back tomorrow.";
-    if (progress.completedDays === 2) return "You’re starting to notice things.";
-    if (progress.completedDays === 3) return "You’ve already changed something. Keep going.";
-    if (progress.completedDays === 5) return "This part can feel uncomfortable. That’s okay.";
-    if (progress.completedDays === 7) return "You’ve completed your first week.";
+    if (progress.completedDays === 0) return "Start with something small. Just a few minutes.";
+    if (progress.completedDays === 1) return "You noticed something today. That’s how it starts.";
+    if (progress.completedDays === 2) return "Small shifts lead to big changes.";
+    if (progress.completedDays === 3) return "You’re building a new way of being together.";
+    if (progress.completedDays === 5) return "Growth can feel quiet. That’s okay.";
+    if (progress.completedDays === 7) return "One week. Something has already changed.";
     return null;
   };
 
   const message = getCompletionMessage();
 
   return (
-    <div className="max-w-md mx-auto p-6 pt-12 space-y-8">
-      <div className="space-y-2">
+    <div className="max-w-md mx-auto p-6 pt-16 space-y-10">
+      <div className="space-y-6">
         {message && (
-          <p className="text-sm text-stone-500 font-light italic mb-4">
+          <p className="text-sm text-stone-500 font-light italic px-2">
             {message}
           </p>
         )}
-        <div className="flex items-center gap-3">
-          <h2 className="text-sm font-medium text-emerald-800 uppercase tracking-widest">{currentPhase.title}</h2>
-          {isInitialJourney && (
-            <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[10px] font-bold uppercase tracking-tighter rounded">
-              Start Here
-            </span>
-          )}
+        <div className="space-y-4">
+          <p className="text-[11px] text-stone-400 uppercase tracking-[0.2em] font-medium">
+            For when something doesn’t feel quite right
+          </p>
+          <div className="space-y-1">
+            <div className="flex items-center gap-3">
+              <h2 className="text-xs font-semibold text-emerald-800 uppercase tracking-widest">{currentPhase.title}</h2>
+              {isInitialJourney && (
+                <span className="px-2 py-0.5 bg-emerald-100 text-emerald-700 text-[9px] font-bold uppercase tracking-tight rounded-sm">
+                  Start Here
+                </span>
+              )}
+            </div>
+            <h1 className="text-2xl font-semibold text-stone-900 tracking-tight">{currentWeek.title}</h1>
+          </div>
         </div>
-        <h1 className="text-2xl font-semibold text-stone-900">{currentWeek.title}</h1>
       </div>
 
-      <div className="bg-white p-6 rounded-3xl shadow-sm border border-stone-100 space-y-4">
-        <p className="text-sm text-stone-500 uppercase tracking-wider">Today's Step</p>
-        <h3 className="text-xl font-medium text-stone-900">{todayStep.title}</h3>
-        <Link 
-          href="/today"
-          className="block w-full py-4 bg-emerald-600 text-white rounded-full font-medium text-center hover:bg-emerald-700 transition-colors"
-        >
-          Start Today
-        </Link>
+      <div className="bg-white p-8 rounded-[32px] shadow-sm border border-stone-100 space-y-6">
+        <div className="space-y-1">
+          <p className="text-[10px] text-stone-400 uppercase tracking-[0.15em] font-bold">TODAY</p>
+          <h3 className="text-xl font-medium text-stone-900 tracking-tight">{todayStep.title}</h3>
+        </div>
+        
+        <div className="space-y-3">
+          <Link 
+            href="/today"
+            className="block w-full py-4 bg-emerald-700 text-white rounded-full font-medium text-center hover:bg-emerald-800 transition-all shadow-sm active:scale-[0.98]"
+          >
+            Try this today (2 mins)
+          </Link>
+          <p className="text-center text-xs text-stone-400 font-light italic">
+            A small step that can change how today feels
+          </p>
+        </div>
       </div>
 
-      <ProgressRow progress={progress} />
+      <div className="space-y-6">
+        <ProgressRow progress={progress} />
+      </div>
     </div>
   );
 }
