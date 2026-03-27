@@ -1,6 +1,6 @@
 'use client';
-import { journeyData } from '@/data/journey';
-import { getProgress } from '@/lib/store';
+import { journeyData } from '../../data/journey';
+import { getProgress } from '../../lib/store';
 
 export default function Journey() {
   const progress = getProgress();

@@ -1,9 +1,9 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { journeyData } from '@/data/journey';
-import { getProgress } from '@/lib/store';
-import ProgressRow from '@/components/ProgressRow';
-import Onboarding from '@/components/Onboarding';
+import { journeyData } from '../data/journey';
+import { getProgress } from '../lib/store';
+import ProgressRow from '../components/ProgressRow';
+import Onboarding from '../components/Onboarding';
 import Link from 'next/link';
 
 export default function Home() {

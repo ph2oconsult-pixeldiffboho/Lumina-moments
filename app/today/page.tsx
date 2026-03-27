@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { journeyData } from '@/data/journey';
-import { getProgress, markDayComplete } from '@/lib/store';
+import { journeyData } from '../../data/journey';
+import { getProgress, markDayComplete } from '../../lib/store';
 import { useRouter } from 'next/navigation';
 
 export default function Today() {

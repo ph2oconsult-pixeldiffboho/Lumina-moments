@@ -1,5 +1,5 @@
 'use client';
-import { getProgress } from '@/lib/store';
+import { getProgress } from '../../lib/store';
 
 export default function Progress() {
   const progress = getProgress();

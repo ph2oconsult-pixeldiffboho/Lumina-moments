@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { completeOnboarding } from '@/lib/store';
+import { completeOnboarding } from '../lib/store';
 
 interface OnboardingProps {
   onComplete: () => void;
