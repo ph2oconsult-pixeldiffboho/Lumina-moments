@@ -2,7 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import { getMomentRankings } from '@/lib/store';
-import { ArrowUp, ArrowDown, BarChart3 } from 'lucide-react';
+import { ArrowUp, ArrowDown, BarChart3, Home as HomeIcon } from 'lucide-react';
+import Link from 'next/link';
 
 export default function StatsPage() {
   const [rankings, setRankings] = useState<any[]>([]);
@@ -12,53 +13,63 @@ export default function StatsPage() {
   }, []);
 
   return (
-    <div className="max-w-2xl mx-auto min-h-screen bg-stone-50 p-8 font-sans">
-      <header className="mb-12 space-y-2">
-        <div className="flex items-center gap-3 text-emerald-600">
-          <BarChart3 className="w-6 h-6" />
-          <h1 className="text-2xl font-bold tracking-tight text-stone-900">Content Quality</h1>
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col font-sans selection:bg-emerald-100 select-none">
+      <header className="p-8 pt-[calc(4rem+env(safe-area-inset-top,0px))] flex justify-between items-start">
+        <div className="space-y-2">
+          <div className="flex items-center gap-3 text-emerald-600">
+            <BarChart3 className="w-6 h-6" />
+            <h1 className="text-2xl font-bold tracking-tight text-stone-900">Content Quality</h1>
+          </div>
+          <p className="text-stone-500 font-light text-sm">
+            Ranking moments based on user reflection data.
+          </p>
         </div>
-        <p className="text-stone-500 font-light">
-          Ranking moments based on user reflection data.
-        </p>
+        <Link 
+          href="/"
+          className="w-10 h-10 bg-white rounded-full border border-stone-200 shadow-sm flex items-center justify-center text-stone-400 hover:text-stone-600 transition-all active:scale-90"
+        >
+          <HomeIcon className="w-4 h-4" />
+        </Link>
       </header>
 
-      {rankings.length === 0 ? (
-        <div className="bg-white p-12 rounded-[32px] border border-stone-100 text-center space-y-4">
-          <p className="text-stone-400 font-light italic">No reflection data yet.</p>
-          <p className="text-xs text-stone-300">Complete moments and reflect to see rankings.</p>
-        </div>
-      ) : (
-        <div className="space-y-8">
-          {/* Top Performers */}
-          <section className="space-y-4">
-            <div className="flex items-center gap-2 px-2">
-              <ArrowUp className="w-4 h-4 text-emerald-500" />
-              <h2 className="text-sm font-bold uppercase tracking-widest text-stone-400">Top Performers</h2>
-            </div>
-            <div className="space-y-3">
-              {rankings.slice(0, 3).map((moment) => (
-                <MomentCard key={moment.title} moment={moment} />
-              ))}
-            </div>
-          </section>
-
-          {/* Weak Performers */}
-          {rankings.length > 3 && (
-            <section className="space-y-4 pt-8">
+      <main className="flex-1 p-8 space-y-10 overflow-y-auto pb-[calc(3rem+env(safe-area-inset-bottom,0px))]">
+        {rankings.length === 0 ? (
+          <div className="bg-white p-12 rounded-[32px] border border-stone-100 text-center space-y-4">
+            <p className="text-stone-400 font-light italic">No reflection data yet.</p>
+            <p className="text-xs text-stone-300">Complete moments and reflect to see rankings.</p>
+          </div>
+        ) : (
+          <div className="space-y-8">
+            {/* Top Performers */}
+            <section className="space-y-4">
               <div className="flex items-center gap-2 px-2">
-                <ArrowDown className="w-4 h-4 text-rose-500" />
-                <h2 className="text-sm font-bold uppercase tracking-widest text-stone-400">Weak Performers</h2>
+                <ArrowUp className="w-4 h-4 text-emerald-500" />
+                <h2 className="text-sm font-bold uppercase tracking-widest text-stone-400">Top Performers</h2>
               </div>
               <div className="space-y-3">
-                {rankings.slice(-3).reverse().map((moment) => (
+                {rankings.slice(0, 3).map((moment) => (
                   <MomentCard key={moment.title} moment={moment} />
                 ))}
               </div>
             </section>
-          )}
-        </div>
-      )}
+
+            {/* Weak Performers */}
+            {rankings.length > 3 && (
+              <section className="space-y-4 pt-8">
+                <div className="flex items-center gap-2 px-2">
+                  <ArrowDown className="w-4 h-4 text-rose-500" />
+                  <h2 className="text-sm font-bold uppercase tracking-widest text-stone-400">Weak Performers</h2>
+                </div>
+                <div className="space-y-3">
+                  {rankings.slice(-3).reverse().map((moment) => (
+                    <MomentCard key={moment.title} moment={moment} />
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        )}
+      </main>
     </div>
   );
 }

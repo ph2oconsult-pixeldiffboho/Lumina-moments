@@ -1,12 +1,14 @@
 'use client';
-import { getProgress } from '../../lib/store';
+import { getProgress, resetProgress } from '../../lib/store';
 import { journeyData } from '../../data/journey';
 import Link from 'next/link';
-import { ArrowLeft, Check, Circle, Bell } from 'lucide-react';
+import { ArrowLeft, Check, Circle, Bell, Home as HomeIcon, RotateCcw } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useState, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Progress() {
+  const router = useRouter();
   const progress = getProgress();
   const [notificationPermission, setNotificationPermission] = useState<NotificationPermission | 'unsupported'>('default');
 
@@ -25,16 +27,31 @@ export default function Progress() {
     }
   };
 
+  const handleReset = () => {
+    if (window.confirm('Are you sure you want to reset all your progress? This cannot be undone.')) {
+      resetProgress();
+      router.push('/');
+    }
+  };
+
   return (
-    <div className="max-w-md mx-auto min-h-screen bg-stone-50 flex flex-col font-sans selection:bg-emerald-100">
-      <header className="p-8 pt-16 flex items-center gap-4 sticky top-0 bg-stone-50/80 backdrop-blur-md z-30">
-        <Link href="/" className="p-2 -ml-2 text-stone-400 hover:text-stone-900 transition-colors">
-          <ArrowLeft className="w-5 h-5" />
+    <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col font-sans selection:bg-emerald-100 select-none">
+      <header className="p-8 pt-[calc(4rem+env(safe-area-inset-top,0px))] flex items-center justify-between sticky top-0 bg-stone-50/80 backdrop-blur-md z-30">
+        <div className="flex items-center gap-4">
+          <Link href="/" className="p-2 -ml-2 text-stone-400 hover:text-stone-900 transition-colors">
+            <ArrowLeft className="w-5 h-5" />
+          </Link>
+          <h1 className="text-2xl font-medium text-stone-900 tracking-tight">Your Journey</h1>
+        </div>
+        <Link 
+          href="/"
+          className="w-10 h-10 bg-white rounded-full border border-stone-200 shadow-sm flex items-center justify-center text-stone-400 hover:text-stone-600 transition-all active:scale-90"
+        >
+          <HomeIcon className="w-4 h-4" />
         </Link>
-        <h1 className="text-2xl font-medium text-stone-900 tracking-tight">Your Journey</h1>
       </header>
 
-      <main className="flex-1 p-8 pt-4 space-y-16 pb-32">
+      <main className="flex-1 p-8 pt-4 space-y-16 pb-[calc(8rem+env(safe-area-inset-bottom,0px))] overflow-y-auto">
         {journeyData.map((phase, pIndex) => {
           // Calculate progress for this phase
           let totalMoments = 0;
@@ -93,7 +110,7 @@ export default function Progress() {
                                 <Circle className={`w-5 h-5 ${isCurrent ? 'text-emerald-400' : 'text-stone-200'}`} />
                               )}
                             </div>
-                            <span className={`text-sm font-medium leading-tight ${
+                            <span className={`text-sm font-medium leading-tight select-text ${
                               isCompleted ? 'text-stone-400' : 
                               isCurrent ? 'text-stone-900' : 
                               'text-stone-300'
@@ -150,6 +167,37 @@ export default function Progress() {
                 Enable Nudges
               </button>
             )}
+          </div>
+        </section>
+
+        {/* Danger Zone */}
+        <section className="pt-8 border-t border-stone-100 space-y-6">
+          <div className="space-y-1 px-2">
+            <p className="text-[10px] font-bold text-rose-400 uppercase tracking-[0.2em]">
+              Danger Zone
+            </p>
+            <h2 className="text-xl font-medium text-stone-900 tracking-tight">Restart Journey</h2>
+          </div>
+
+          <div className="bg-white p-8 rounded-[40px] border border-rose-100 shadow-sm space-y-6">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 bg-rose-50 rounded-full flex items-center justify-center text-rose-400 shrink-0">
+                <RotateCcw className="w-5 h-5" />
+              </div>
+              <div className="space-y-1">
+                <p className="text-sm font-medium text-stone-900">Reset All Progress</p>
+                <p className="text-xs text-stone-500 leading-relaxed font-light">
+                  This will clear all your completed moments and reflections. You will start back at the very first moment.
+                </p>
+              </div>
+            </div>
+
+            <button
+              onClick={handleReset}
+              className="w-full py-4 bg-rose-50 text-rose-600 rounded-full text-sm font-medium transition-all active:scale-[0.98] hover:bg-rose-100"
+            >
+              Reset Progress
+            </button>
           </div>
         </section>
       </main>

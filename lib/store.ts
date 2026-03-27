@@ -225,6 +225,12 @@ export function getMomentRankings() {
   return rankings.sort((a, b) => b.score - a.score);
 }
 
+export function resetProgress() {
+  if (typeof window !== 'undefined') {
+    localStorage.removeItem(STORAGE_KEY);
+  }
+}
+
 function saveProgress(progress: Progress) {
   if (typeof window !== 'undefined') {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(progress));

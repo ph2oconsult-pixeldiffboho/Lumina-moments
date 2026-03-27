@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { motion } from 'motion/react';
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, Home as HomeIcon } from 'lucide-react';
+import Link from 'next/link';
 
 interface RewardScreenProps {
   headline: string;
@@ -12,6 +13,16 @@ interface RewardScreenProps {
 export default function RewardScreen({ headline, onContinue }: RewardScreenProps) {
   return (
     <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col items-center justify-center p-10 pt-[env(safe-area-inset-top,24px)] pb-[calc(2.5rem+env(safe-area-inset-bottom,0px))] font-sans selection:bg-emerald-100 select-none">
+      {/* Top Navigation */}
+      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-start items-center pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+        <Link 
+          href="/"
+          className="w-10 h-10 bg-white/80 backdrop-blur-md rounded-full border border-stone-200 shadow-sm flex items-center justify-center text-stone-400 hover:text-stone-600 transition-all active:scale-90"
+        >
+          <HomeIcon className="w-4 h-4" />
+        </Link>
+      </div>
+
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

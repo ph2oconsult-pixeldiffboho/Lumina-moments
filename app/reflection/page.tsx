@@ -4,6 +4,8 @@ import React, { useState, useEffect, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'motion/react';
 import { saveReflection } from '@/lib/store';
+import { Home as HomeIcon } from 'lucide-react';
+import Link from 'next/link';
 
 type ReflectionValue = 'helped' | 'little' | 'not really';
 
@@ -37,6 +39,16 @@ function ReflectionContent() {
 
   return (
     <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col items-center justify-center p-8 pt-[env(safe-area-inset-top,24px)] pb-[calc(2rem+env(safe-area-inset-bottom,0px))] font-sans selection:bg-emerald-100 select-none">
+      {/* Top Navigation */}
+      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-start items-center pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+        <Link 
+          href="/"
+          className="w-10 h-10 bg-white/80 backdrop-blur-md rounded-full border border-stone-200 shadow-sm flex items-center justify-center text-stone-400 hover:text-stone-600 transition-all active:scale-90"
+        >
+          <HomeIcon className="w-4 h-4" />
+        </Link>
+      </div>
+
       <AnimatePresence mode="wait">
         {!selected ? (
           <motion.div

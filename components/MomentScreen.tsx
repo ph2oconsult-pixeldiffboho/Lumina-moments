@@ -2,8 +2,9 @@
 
 import React, { useState } from 'react';
 import { Moment } from '../data/journey';
-import { Zap, BookOpen } from 'lucide-react';
+import { Zap, BookOpen, Home as HomeIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import Link from 'next/link';
 
 interface MomentScreenProps {
   phaseTitle: string;
@@ -16,8 +17,15 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
 
   return (
     <div className="max-w-md mx-auto min-h-[100dvh] bg-stone-50 flex flex-col font-sans selection:bg-emerald-100 select-none">
-      {/* Mode Toggle */}
-      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-center pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+      {/* Top Navigation */}
+      <div className="fixed top-0 left-0 w-full p-6 z-30 flex justify-between items-center pt-[calc(1.5rem+env(safe-area-inset-top,0px))]">
+        <Link 
+          href="/"
+          className="w-10 h-10 bg-white/80 backdrop-blur-md rounded-full border border-stone-200 shadow-sm flex items-center justify-center text-stone-400 hover:text-stone-600 transition-all active:scale-90"
+        >
+          <HomeIcon className="w-4 h-4" />
+        </Link>
+
         <div className="bg-white/80 backdrop-blur-md p-1.5 rounded-full border border-stone-200 shadow-sm flex gap-1">
           <button
             onClick={() => setMode('quick')}
@@ -38,6 +46,8 @@ export default function MomentScreen({ phaseTitle, moment, onComplete }: MomentS
             Learn
           </button>
         </div>
+
+        <div className="w-10" /> {/* Spacer for balance */}
       </div>
 
       <main className="flex-1 p-6 pt-[calc(6rem+env(safe-area-inset-top,0px))] pb-[calc(8rem+env(safe-area-inset-bottom,0px))] space-y-10 overflow-y-auto">
